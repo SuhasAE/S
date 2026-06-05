@@ -1660,8 +1660,9 @@ async function askAI(question) {
     loadBubble.classList.remove('loading');
     loadBubble.textContent = data.answer || 'No response from AI.';
   } catch (e) {
+    console.error('Dora fetch error:', e);
     loadBubble.classList.remove('loading');
-    loadBubble.textContent = `${currentSite.name} was built during the ${currentSite.dynasty} period (${currentSite.era}). ${currentSite.desc.split('.')[0]}. (AI unavailable — check your Worker URL.)`;
+    loadBubble.textContent = `Dora couldn't connect: ${e.message}. Open browser console (F12) to see the full error.`;
   }
 
   chatEl.scrollTop = chatEl.scrollHeight;
