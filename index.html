@@ -690,6 +690,135 @@
     margin-bottom: 4px;
   }
 
+
+  /* ════════════════════════════════════════════════════════
+     RESPONSIVE — TABLET (≤ 768px) & MOBILE (≤ 480px)
+     ════════════════════════════════════════════════════════ */
+
+  @media (max-width: 768px) {
+    /* Search bar — full width on tablet */
+    #search-container {
+      width: calc(100% - 40px);
+      left: 20px;
+      transform: none;
+      top: 70px;
+    }
+
+    /* Nav HUD — full width */
+    #nav-hud { width: calc(100% - 32px); left: 16px; transform: translateY(20px); bottom: 100px; }
+    #nav-hud.active { transform: translateY(0); }
+
+    /* Side panel — full screen slide up from bottom on tablet */
+    #side-panel {
+      width: 100%;
+      top: auto;
+      height: 80vh;
+      border-left: none;
+      border-top: 1px solid var(--panel-border);
+      border-radius: 20px 20px 0 0;
+      transform: translateY(100%);
+    }
+    #side-panel.open { transform: translateY(0); }
+
+    /* Filters — horizontal scroll row */
+    #filters {
+      top: auto;
+      bottom: 90px;
+      left: 0; right: 0;
+      flex-direction: row;
+      overflow-x: auto;
+      padding: 0 16px;
+      gap: 6px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    #filters::-webkit-scrollbar { display: none; }
+    .filter-btn { flex-shrink: 0; font-size: 11px; padding: 6px 12px; }
+
+    /* Legend — hide on tablet, too cramped */
+    #legend { display: none; }
+
+    /* Bottom controls — move up above filters */
+    #bottom-controls { bottom: 148px; right: 12px; }
+
+    /* Drone indicator — top left instead of right (avoids Sanskriti button) */
+    #drone-indicator { right: auto; left: 16px; }
+
+    /* Topbar — shrink Sanskriti button label */
+    .ss-eyebrow { display: none; }
+    .ss-title { font-size: 11px; }
+    #ss-feature-btn { padding: 6px 12px 6px 8px; }
+    .ss-icon-wrap { width: 24px; height: 24px; font-size: 12px; }
+
+    /* Recenter btn */
+    #recenter-btn { bottom: 250px; font-size: 12px; padding: 7px 14px; }
+  }
+
+  @media (max-width: 480px) {
+    /* Topbar */
+    #logo { font-size: 17px; }
+    #site-count { display: none; }
+    .divider-v { display: none; }
+
+    /* Search */
+    #search-container { width: calc(100% - 24px); left: 12px; top: 66px; }
+    #search-input { font-size: 13px; }
+
+    /* Side panel — nearly full screen */
+    #side-panel { height: 88vh; }
+    #panel-name { font-size: 17px; }
+
+    /* Nav HUD */
+    #nav-hud { width: calc(100% - 24px); left: 12px; bottom: 90px; }
+    #nav-card { padding: 12px 14px; gap: 8px; }
+    #nav-instruction { font-size: 14px; }
+    #nav-buttons { flex-wrap: wrap; }
+    #drone-follow-btn, #nav-close-btn { font-size: 11px; padding: 5px 12px; }
+
+    /* Filters — even more compact */
+    #filters { bottom: 80px; padding: 0 12px; gap: 5px; }
+    .filter-btn { font-size: 10px; padding: 5px 10px; }
+
+    /* Bottom controls */
+    #bottom-controls { bottom: 136px; right: 10px; gap: 6px; }
+    .map-ctrl-btn { width: 36px; height: 36px; font-size: 14px; }
+
+    /* Recenter */
+    #recenter-btn { bottom: 240px; font-size: 11px; padding: 6px 12px; }
+
+    /* Dora chat */
+    #dora-header { padding: 10px 12px; }
+    #dora-name { font-size: 13px; }
+    #chat-messages { max-height: 140px; }
+
+    /* Popup — full width */
+    .maplibregl-popup-content { min-width: 180px !important; }
+    .popup-name { font-size: 13px; }
+  }
+
+  /* Tablet landscape — side panel stays as sidebar but narrower */
+  @media (min-width: 481px) and (max-width: 768px) and (orientation: landscape) {
+    #side-panel {
+      width: 300px;
+      height: 100%;
+      top: 0;
+      border-radius: 0;
+      border-left: 1px solid var(--panel-border);
+      border-top: none;
+      transform: translateX(100%);
+    }
+    #side-panel.open { transform: translateX(0); }
+    #filters {
+      bottom: auto;
+      top: 70px;
+      left: 16px;
+      flex-direction: column;
+      width: auto;
+      overflow-x: visible;
+    }
+    .filter-btn { flex-shrink: 1; }
+  }
+
 </style>
 </head>
 <body>
